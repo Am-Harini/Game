@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        background-color:purple;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+     h1{
+            color: white;
+            margin: 100px 100px 0px 100px;
+            font-size: 60px;
+            
+        }
+        div input{
+            padding: 10px;
+            width:35% ;
+            border-radius:20px ;
+            border-color:white;
+            border-style: solid;
+            margin-top: 40px;
+            color: black;
+            background-color: white;
+            font-size:20px;
+           
+        }
+        input:focus{
+            outline: none;
+        }
+        button
+        {
+            margin-top: 30px;
+            width: 12%;
+            height: 30px;
+            color: white;
+            border-radius: 20px;
+            border-color: white;
+            border-style: solid;
+            font-size: 18px;
+        }
+        input::placeholder{
+           color: black;
+        }
+        button:focus{
+            outline: none;
+        }
+        button:hover{
+            background-color:black;
+            color:white;
+            cursor: pointer;
+        }
+        input:hover{
+            background-color:black;
+            color:white;
+            cursor: pointer;
+        }
+        h3{
+            color: white;
+            margin-top: 30px;
+         }
+         
+         
+    </style>
+</head>
+<body >
+    <center>
+    <div class="con">
+    
+   <h1> Welcome To My Guess Game </h1>
+    <div>
+    <input id="guess" placeholder="Enter your guess number">
+    <!--<p id="input" style="color: red; font-size: 20px;"></p>-->
+    </div>
+    <button onclick="check()">Start Game!</button>
+    <h3 id="result">You Right Or Wrong </h3>
+    <h3 id="score"></h3>
+</center>
+</div> 
+<script>
+var guessnum= document.getElementById("guess");
+var res= document.getElementById("result");
+//var error = document.getElementById("input");
+var point= document.getElementById("score");
+var random= Math.floor(Math.random()*10)+1;
+var totalscore= 10;
+function check(){
+var getguess= Number(guessnum.value);
+/*error.textContent="";
+
+    if (isNaN(getguess) || getguess < 1 || getguess > 10) {
+        error.textContent="Please enter a number between 1 and 10!";
+                return;
+    }*/
+    if (isNaN(getguess) || getguess < 1 || getguess > 10) {
+        alert("Please enter a number between 1 and 10!");
+                return;
+    }
+    if(getguess==random)
+    {
+        var text= "YES, Your Guess Is Correct !"
+        res.textContent=text + "You Got 2 point Extra"
+        totalscore= totalscore +2
+        point.textContent= "Score:"+totalscore
+        alert("Congrats, You Won The Match!")
+    }
+    else{
+        res.textContent="OHH NO,Your Guess Is Wrong"
+        totalscore=totalscore-1
+        point.textContent= "Score:"+totalscore
+    }
+}
+</script>
+</body>
+</html>
